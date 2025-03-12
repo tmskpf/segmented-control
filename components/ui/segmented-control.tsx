@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useLayoutEffect } from "react";
+import { useState, useRef, useLayoutEffect, useCallback } from "react";
 import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
 
@@ -23,7 +23,7 @@ export function SegmentedControl({
   const isInitialMount = useRef(true);
   
   // Calculate and store tab positions
-  const updateTabPositions = () => {
+  const updateTabPositions = useCallback(() => {
     if (!containerRef.current) return;
     
     const containerRect = containerRef.current.getBoundingClientRect();
@@ -71,7 +71,7 @@ export function SegmentedControl({
         }
       }
     }
-  };
+  }, [activeTab, previousTab]);
 
   // Update positions on mount and when tabs change
   useLayoutEffect(() => {
@@ -101,7 +101,7 @@ export function SegmentedControl({
     return () => {
       resizeObserver.disconnect();
     };
-  }, [tabs, activeTab, previousTab]);
+  }, [tabs, activeTab, updateTabPositions]);
 
   const handleTabClick = (tab: string) => {
     if (tab !== activeTab) {

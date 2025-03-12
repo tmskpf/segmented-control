@@ -15,8 +15,12 @@ export default function Home() {
       <div className="w-full max-w-md space-y-8">
         <SegmentedControl 
           tabs={["All", "Draft", "Review", "Signing", "Signed"]} 
+          defaultTab={activeTab}
           onChange={handleTabChange}
         />
+        <div className="text-center text-gray-500">
+          Current tab: <span className="font-medium">{activeTab}</span>
+        </div>
       </div>
     </main>
   );
