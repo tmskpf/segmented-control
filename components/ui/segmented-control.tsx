@@ -124,7 +124,7 @@ export function SegmentedControl({
   };
 
   return (
-    <div className="h-8 p-0.5 rounded-lg bg-zinc-100 border border-[#18181B]/[0.02] border-[0.5px] relative inline-flex">
+    <div className="h-8 p-0.5 rounded-lg bg-zinc-100 border-[0.5px] border-[#18181B]/[0.02] relative inline-flex">
       <style jsx>{`
         .container[data-animating="true"] .highlight {
           animation: moveHighlight 0.3s cubic-bezier(0.34, 1.2, 0.64, 1) forwards; /* Slightly more pronounced spring effect */
